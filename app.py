@@ -22,4 +22,4 @@ def home():
 if _name_ == "_main_":
     # Render предоставляет порт через переменную окружения PORT
     port = int(os.environ.get("PORT", 5000))
-    flask_app.run(host="0.0.0.0", port=port)
+    flask_app.run(debug=True, host="0.0.0.0", port=port)
