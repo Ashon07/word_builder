@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Builder Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div id="progress" class="progress" style="width: 20%;"></div>
+        </div>
+
+        <h2>Соберите предложение</h2>
+
+        <div id="task-container">
+            <p id="task-text">Задание 1: Напишите на русском "Goodbye."</p>
+            <div id="word-container" class="word-container">
+                <!-- Кнопки с вариантами ответов -->
+            </div>
+        </div>
+
+        <div id="answer-line" class="answer-line"></div>
+
+        <div class="buttons">
+            <button id="skip">Пропустить</button>
+            <button id="check">Проверить</button>
+            <button id="next-button" style="display: none;">Далее</button> <!-- Кнопка "Далее" -->
+        </div>
+
+        <!-- Сообщения -->
+        <div id="error-message" class="error-message"></div>
+        <div id="success-message" class="success-message"></div>
+
+        <!-- Текущий прогресс -->
+        <div id="current-task" class="current-task">Задание 1/5</div>
+    </div>
+
+    <script src="/static/script.js" defer></script>
+</body>
+</html>

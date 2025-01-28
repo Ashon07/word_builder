@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Builder Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress" style="width: 50%;"></div>
+        </div>
+
+        <h2>Соберите предложение</h2>
+
+        <!-- Контейнер для слов в разброс -->
+        <div id="word-container" class="word-container">
+            <!-- Кнопки с словами будут генерироваться динамически -->
+        </div>
+
+        <!-- Линия для сборки предложения -->
+        <div id="answer-line" class="answer-line"></div>
+
+        <!-- Кнопки управления -->
+        <div class="buttons">
+            <button id="skip">Пропустить</button>
+            <button id="check">Проверить</button>
+            <button id="next-button" class="next-button" style="display: none;">Далее</button> <!-- Кнопка "Далее" -->
+        </div>
+
+        <!-- Сообщение об ошибке -->
+        <div id="error-message" class="error-message"></div>
+
+        <!-- Сообщение о правильном ответе -->
+        <div id="success-message" class="success-message"></div>
+    </div>
+
+    <script src="/static/script.js" defer></script>
+</body>
+</html>
