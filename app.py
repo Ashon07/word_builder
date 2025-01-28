@@ -17,5 +17,8 @@ dash_app.layout = html.Div([
 def home():
     return "Это главная страница Flask-приложения."
 
+# Добавляем для Render
+server = flask_app
+
 if __name__ == "__main__":
     flask_app.run(debug=True)
