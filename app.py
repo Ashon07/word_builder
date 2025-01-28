@@ -1,17 +1,21 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask
+from dash import Dash, html
 
-app = Flask(__name__)
+# Создаём Flask-приложение
+flask_app = Flask(__name__)
 
-@app.route('/')
-def login():
-    return render_template('login.html')
+# Создаём Dash-приложение и связываем его с Flask
+dash_app = Dash(__name__, server=flask_app, url_base_pathname='/dash')
 
-@app.route('/game', methods=['POST'])
-def game():
-    name = request.form.get('name')
-    if not name:
-        return redirect(url_for('login'))
-    return render_template('game.html', name=name)
+# Определяем макет для Dash
+dash_app.layout = html.Div([
+    html.H1("Приложение Dash внутри Flask!")
+])
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Flask route
+@flask_app.route("/")
+def home():
+    return "Это главная страница Flask-приложения."
+
+if __name__ == "__main__":
+    flask_app.run(debug=True)

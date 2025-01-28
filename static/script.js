@@ -8,29 +8,29 @@ const currentTaskText = document.getElementById("current-task");
 const progressBar = document.getElementById("progress");
 
 const task1 = {
-    question: "Напишите на русском 'Goodbye.'",
-    words: ["До", "давай", "после", "свидания"],
-    correctAnswer: "До свидания"
+     question: "Put the words in the right order.",
+        options: ["brother", "My", "fast", "runs"],
+        correctAnswer: "My brother runs fast"
 };
 const task2 = {
-    question: "Напишите на русском 'Yes come on'",
-    words: ["Да", "зачем", "давай", "нет"],
-    correctAnswer: "Да давай"
+     question: "Make up questions.",
+        options: ["you", "like", "Do", "watch", "TV?", "to."],
+        correctAnswer: "Do you like to watch TV?"
 };
 const task3 = {
-    question: "Напишите на английском 'Твой кофе'",
-    words: ["Your", "tea", "coffee", "my"],
-    correctAnswer: "Your coffee"
+     question: "Make up special question.",
+        options: ["often", "How", "do", "music", "to", "you", "listen?"],
+        correctAnswer: "How often do you listen to music?"
 };
 const task4 = {
-    question: "Напишите на английском 'I like learning English.'",
-    words: ["I", "like", "learning", "English"],
-    correctAnswer: "I like learning English"
+    question: "Which word is the odd one?",
+        options: ["Quickly", "Beautifully", "Happiness", "Carefull"],
+        correctAnswer: "Happiness"
 };
 const task5 = {
-    question: "Напишите на английском 'I love listening to music, particularly rock music.'",
-    words: ["I", "love", "listening", "to", "music,", "particularly", "rock", "music."],
-    correctAnswer: "I love listening to music, particularly rock music."
+    question: "Which conjunction is the odd one out?",
+        options: ["And", "But", "Because", "Fast"],
+        correctAnswer: "Fast"
 };
 
 let currentTask = task1;
