@@ -7,47 +7,50 @@ const taskText = document.getElementById("task-text");
 const currentTaskText = document.getElementById("current-task");
 const progressBar = document.getElementById("progress");
 
-const task1 = {
-     question: "Put the words in the right order.",
+// Все задания
+const tasks = [
+    {
+        question: "Put the words in the right order.",
         options: ["brother", "My", "fast", "runs"],
         correctAnswer: "My brother runs fast"
-};
-const task2 = {
-     question: "Make up questions.",
+    },
+    {
+        question: "Make up questions.",
         options: ["you", "like", "Do", "watch", "TV?", "to."],
         correctAnswer: "Do you like to watch TV?"
-};
-const task3 = {
-     question: "Make up special question.",
+    },
+    {
+        question: "Make up special question.",
         options: ["often", "How", "do", "music", "to", "you", "listen?"],
         correctAnswer: "How often do you listen to music?"
-};
-const task4 = {
-    question: "Which word is the odd one?",
+    },
+    {
+        question: "Which word is the odd one?",
         options: ["Quickly", "Beautifully", "Happiness", "Carefull"],
         correctAnswer: "Happiness"
-};
-const task5 = {
-    question: "Which conjunction is the odd one out?",
+    },
+    {
+        question: "Which conjunction is the odd one out?",
         options: ["And", "But", "Because", "Fast"],
         correctAnswer: "Fast"
-};
+    }
+];
 
-let currentTask = task1;
+let currentTask = tasks[0];
 let taskNumber = 1;
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // обмен элементов
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
 function updateTask(task) {
-    shuffleArray(task.words);
+    shuffleArray(task.options);
     taskText.textContent = task.question;
     wordContainer.innerHTML = "";
-    task.words.forEach(word => {
+    task.options.forEach(word => {
         const button = document.createElement("button");
         button.classList.add("word");
         button.textContent = word;
@@ -56,31 +59,31 @@ function updateTask(task) {
     answerLine.innerHTML = "";
     errorMessage.style.display = "none";
     successMessage.style.display = "none";
-    nextButton.style.display = "none"; // Скрыть кнопку "Далее"
-    
+    nextButton.style.display = "none";
+
     // Обновляем прогресс
-    const progressPercentage = (taskNumber / 5) * 100;
-    progressBar.style.width = `${progressPercentage}%`;
-    currentTaskText.textContent = `Задание ${taskNumber}/5`;
+    const progressPercentage = (taskNumber / tasks.length) * 100;
+    progressBar.style.width = ${progressPercentage}%;
+    currentTaskText.textContent = Задание ${taskNumber}/${tasks.length};
 }
 
 wordContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("word")) {
         const word = e.target;
-        answerLine.appendChild(word); // Перемещаем слово в линию
+        answerLine.appendChild(word);
     }
 });
 
 answerLine.addEventListener("click", (e) => {
     if (e.target.classList.contains("word")) {
         const word = e.target;
-        wordContainer.appendChild(word); // Возвращаем слово в контейнер
+        wordContainer.appendChild(word);
     }
 });
 
 document.getElementById("check").addEventListener("click", () => {
     const answer = Array.from(answerLine.children).map(word => word.textContent).join(" ");
-    
+
     if (answer === currentTask.correctAnswer) {
         successMessage.textContent = "Правильно!";
         successMessage.style.display = "block";
@@ -95,15 +98,15 @@ document.getElementById("check").addEventListener("click", () => {
 
 document.getElementById("skip").addEventListener("click", () => {
     taskNumber++;
-    if (taskNumber > 5) taskNumber = 1;
-    currentTask = taskNumber === 1 ? task1 : taskNumber === 2 ? task2 : taskNumber === 3 ? task3 : taskNumber === 4 ? task4 : task5;  // Поменяли местами задания 4 и 5
+    if (taskNumber > tasks.length) taskNumber = 1;
+    currentTask = tasks[(taskNumber - 1) % tasks.length];
     updateTask(currentTask);
 });
 
 nextButton.addEventListener("click", () => {
     taskNumber++;
-    if (taskNumber > 5) taskNumber = 1;
-    currentTask = taskNumber === 1 ? task1 : taskNumber === 2 ? task2 : taskNumber === 3 ? task3 : taskNumber === 4 ? task4 : taskNumber === 5 ? task5 : task4;  // Поменяли местами задания 4 и 5
+    if (taskNumber > tasks.length) taskNumber = 1;
+    currentTask = tasks[(taskNumber - 1) % tasks.length];
     updateTask(currentTask);
 });
 

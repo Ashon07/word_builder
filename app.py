@@ -1,11 +1,12 @@
+import os
 from flask import Flask
 from dash import Dash, html
 
 # Создаём Flask-приложение
-flask_app = Flask(__name__)
+flask_app = Flask(_name_)
 
 # Создаём Dash-приложение и связываем его с Flask
-dash_app = Dash(__name__, server=flask_app, url_base_pathname='/dash')
+dash_app = Dash(_name_, server=flask_app, url_base_pathname='/dash')
 
 # Определяем макет для Dash
 dash_app.layout = html.Div([
@@ -17,8 +18,8 @@ dash_app.layout = html.Div([
 def home():
     return "Это главная страница Flask-приложения."
 
-# Добавляем для Render
-server = flask_app
 
-if __name__ == "__main__":
-    flask_app.run(debug=True, host='0.0.0.0', port=5000)
+if _name_ == "_main_":
+    # Render предоставляет порт через переменную окружения PORT
+    port = int(os.environ.get("PORT", 5000))
+    flask_app.run(host="0.0.0.0", port=port)
